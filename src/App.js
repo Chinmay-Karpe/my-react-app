@@ -1,31 +1,28 @@
 import { useState } from "react";
 
 function App() {
-  let title = "Map Demo";
-  let [list, setList] = useState([]);
+  // useState, hooks, Stateful Variable
+  // ES6 Syntax : De-Structureing
+  // let counter = 100;
+  let [counter, setCounter] = useState(100);
 
-  let addItem = () => {
-    // alternate :: No DOM PLZ!
-    let textRef = document.querySelector("#textId1");
+  // Member function,
+  // ES6 Syntax: Arrow Function
+  // React Binding + using Interpolation
+  // How calling this function.
+  let increment = () => {
+    // logical opr
+    counter++;
 
-    // logical part
-    let newList = [textRef.value, ...list];
-
-    textRef.value = "";
-
-    // dom part
-    setList(newList);
+    // dom opr
+    setCounter(counter);
   };
 
   return (
     <div>
-      <h1> {title} </h1>
-      <input type="text" name="" id="textId1" />
-      <input type="button" value="Add Item Into List" onClick={addItem} />
-
-      {list.map((item) => (
-        <h1>{item}</h1>
-      ))}
+      <h1>Counter Application</h1>
+      <h1> {counter} </h1>
+      <input type="button" value="Incrment" onClick={increment} />
     </div>
   );
 }
