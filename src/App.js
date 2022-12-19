@@ -1,29 +1,13 @@
+// USER DEFINED TAGS == COMPONENT
 function App() {
-  return (
-    <div>
-      <Person name="Rahul" />
-      <Person name="Rohit" />
-      <Person name="Kharghar" />
-      <Person name="Belapur" />
-      <Person name="Nerul" />
-      <Person name="Panvel" />
-      <Person name="Lonavala" />
-    </div>
-  );
-}
+  let project = "My React Project";
+  let username = "rahul";
 
-// <Person />
-function Person({ name }) {
+  //JSX => HTML CSS
   return (
     <div>
-      <img src="https://picsum.photos/400" alt="" />
-      <h1>Person Name : {name} </h1>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium,
-        delectus placeat? Consequuntur iusto perferendis voluptatibus, ipsa sit
-        non. Quo cumque veniam nostrum voluptatem qui accusantium ipsa labore
-        libero! Tempore, consequuntur!
-      </p>
+      <h1>{project}</h1>
+      <h1>Hello {username} !</h1>
     </div>
   );
 }
