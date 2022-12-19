@@ -1,18 +1,12 @@
-// JSX!
-// JSX => JAVA SCRIPT + XML
-// XML => Extended the HTML and Cratedad new Tag
-// App => <App />
+// MULTI LINE JSX ::: <App />
 function App() {
-  return <h1>Hello</h1>;
+  return (
+    <h1>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum sed maxime
+      quisquam inventore reprehenderit! Nobis ducimus, voluptatem cum at
+      placeat, quia facere ut natus ipsam id temporibus iusto velit officia?
+    </h1>
+  );
 }
 
-/*function normalFn() {
-  // ..
-  // ..
-  // ..
-  return 100;
-  return "abcd"
-  return true;
-  return [];
-  return {};
-}*/
+export default App;
