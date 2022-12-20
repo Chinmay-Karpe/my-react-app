@@ -1,47 +1,25 @@
+import { useState } from "react";
+
 function App() {
-  /** Default No param */
-  let clickMe = () => {
-    console.log("Hello");
-  };
+  let [message, setMessage] = useState("Typing..");
 
-  /** Default Event Param */
-  let clickMe2 = (e) => {
-    console.log(e);
-  };
-
-  /** Custom Param */
-  let clickMe3 = (p1) => {
-    console.log(p1);
-  };
-
-  /** Event + Custom Param */
-  let clickMe4 = (e, p1) => {
-    console.log(e, p1);
+  let updateMessage = (e) => {
+    //e.target == document.querySelector("input");
+    message = e.target.value;
+    setMessage(message);
   };
 
   return (
     <div>
-      <h1>Btn Click Demo</h1>
+      <h1>Working with Input</h1>
 
-      {/** Default No param */}
-      <input type="button" value="clickMe" onClick={clickMe} />
-
-      {/** Default Event Param */}
-      <input type="button" value="clickMe2" onClick={clickMe2} />
-
-      {/** Custom Param */}
       <input
-        type="button"
-        value="clickMe3"
-        onClick={() => clickMe3("primary")}
+        type="text"
+        placeholder="Enter Message"
+        value={message}
+        onChange={updateMessage}
       />
-
-      {/** Event + Custom Param */}
-      <input
-        type="button"
-        value="clickMe4"
-        onClick={(e) => clickMe4(e, "adsf afd")}
-      />
+      <h1>{message}</h1>
     </div>
   );
 }
