@@ -1,31 +1,17 @@
-import { useState } from "react";
+import "./App.css";
 
 function App() {
-  let title = "Map Demo";
-  let [list, setList] = useState([]);
-
-  let addItem = () => {
-    // alternate :: No DOM PLZ!
-    let textRef = document.querySelector("#textId1");
-
-    // logical part
-    let newList = [textRef.value, ...list];
-
-    textRef.value = "";
-
-    // dom part
-    setList(newList);
-  };
+  let mystyle = { color: "white", background: "purple" };
 
   return (
     <div>
-      <h1> {title} </h1>
-      <input type="text" name="" id="textId1" />
-      <input type="button" value="Add Item Into List" onClick={addItem} />
+      <h1 className="beautify">Hello Again!</h1>
 
-      {list.map((item) => (
-        <h1>{item}</h1>
-      ))}
+      {/*This is kind of internal. Note:Only one curly braces.*/}
+      <h1 style={mystyle}>Hello World</h1>
+
+      {/*This is INLINE STYLE*/}
+      <h1 style={{ color: "white", backgroundColor: "red" }}>Hello</h1>
     </div>
   );
 }
