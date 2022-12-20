@@ -16,9 +16,17 @@ function App() {
   };
 
   let addMessage = () => {
-    let newMessage = { message: "Chill bro...!", messageTime: new Date() };
+    //let newMessage = { message: "Chill bro...!", messageTime: new Date() };
+    let newMessage = { message: message, messageTime: new Date() };
     list = [newMessage, ...list];
     setList(list);
+    setMessage("");
+  };
+
+  let checkEnterEvent = (e) => {
+    if (e.keyCode === 13) {
+      addMessage();
+    }
   };
 
   return (
@@ -31,6 +39,7 @@ function App() {
           onChange={updateInputMessage}
           type="text"
           placeholder="Enter Message"
+          onKeyUp={checkEnterEvent}
         />
         <input
           className="btn btn-primary"
