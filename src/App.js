@@ -30,19 +30,19 @@ function App() {
         <input
           className="btn btn-primary"
           type="button"
-          value="Primary Theme"
+          value="Primary"
           onClick={makePrimaryTheme}
         />
         <input
           className="btn btn-success"
           type="button"
-          value="Success Theme"
+          value="Success"
           onClick={makeSuccessTheme}
         />
         <input
           className="btn btn-danger"
           type="button"
-          value="Danger Theme"
+          value="Danger"
           onClick={makeDangerTheme}
         />
       </div>
