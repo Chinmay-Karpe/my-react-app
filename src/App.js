@@ -1,12 +1,18 @@
 import { useState } from "react";
 
 function App() {
+  let [message, setMessage] = useState("Hello");
   let [list, setList] = useState([
     { message: "Hi", messageTime: new Date() },
     { message: "How r u", messageTime: new Date() },
     { message: "Good", messageTime: new Date() },
     { message: "fine bro", messageTime: new Date() },
   ]);
+
+  let updateInputMessage = (e) => {
+    message = e.target.value;
+    setMessage(message);
+  };
 
   // Member fn
   let addMessage = () => {
@@ -18,14 +24,21 @@ function App() {
   return (
     <div>
       <h1 className="bg-primary text-white p-3">Map Demo</h1>
-
-      <input
-        className="btn btn-primary"
-        type="button"
-        value="Add Message"
-        onClick={addMessage}
-      />
-
+      <div className="d-flex">
+        <input
+          className="form-control"
+          value={message}
+          onChange={updateInputMessage}
+          type="text"
+          placeholder="Enter Message"
+        />
+        <input
+          className="btn btn-primary"
+          type="button"
+          value="Add Message"
+          onClick={addMessage}
+        />
+      </div>
       {list.map((item, index) => (
         <div key={index} className="d-flex my-1">
           <div className="badge text-bg-primary">
