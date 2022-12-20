@@ -9,12 +9,12 @@ function App() {
     { message: "fine bro", messageTime: new Date() },
   ]);
 
+  // Member fn
   let updateInputMessage = (e) => {
     message = e.target.value;
     setMessage(message);
   };
 
-  // Member fn
   let addMessage = () => {
     let newMessage = { message: "Chill bro...!", messageTime: new Date() };
     list = [newMessage, ...list];
