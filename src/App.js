@@ -6,6 +6,7 @@ function App() {
   let [messageList, setMessageList] = useState([]);
 
   //Functions
+  /*("/messages)*/
   let getAllMessages = async () => {
     let url = `http://localhost:3001/messages`;
     let response = await axios.get(url);
@@ -16,6 +17,19 @@ function App() {
     setMessageList(messageList);
   };
 
+  /*("/message)*/
+  let createNewMessage = async () => {
+    let url = `http://localhost:3001/message`;
+
+    let data = {
+      message: "Test Message",
+      messageTime: new Date(),
+      reply: true,
+    };
+
+    await axios.post(url, data);
+  };
+
   return (
     <div>
       <h1>{title}</h1>
@@ -24,6 +38,12 @@ function App() {
         type="button"
         value="Make Ajax/API Call"
         onClick={getAllMessages}
+      />
+
+      <input
+        type="button"
+        value="Make Ajax/POST Call"
+        onClick={createNewMessage}
       />
 
       {messageList.map((item) => (
