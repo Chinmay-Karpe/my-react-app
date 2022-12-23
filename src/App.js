@@ -1,75 +1,22 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
-  // Data Member
-  let [title] = useState("API DEMO");
-  let [messageList, setMessageList] = useState([]);
-  let [message, setMessage] = useState("");
-
-  // Spl Funcn :: Hook :: Like Constructor ::  Called while the Compoent is Initialized.
-  useEffect(() => {
-    // console.log("I AM GETTING CALLED");
-    getAllMessages();
-  }, []);
-
-  // Member Functions
-  let handleOnChangeMessage = (e) => {
-    message = e.target.value;
-    setMessage(message);
-    //setMessage(e.target.value)
-  };
-
-  /*("/messages)*/
-  let getAllMessages = async () => {
-    let url = `http://localhost:3001/messages`;
-    let response = await axios.get(url);
-    //console.log(response);
-
-    //Getting the Message from Server :: And re-rendering
-    messageList = [...response.data];
-    setMessageList(messageList);
-  };
-
-  /*("/message)*/
-  let createNewMessage = async () => {
-    let url = `http://localhost:3001/message`;
-
-    let data = {
-      message: message,
-      messageTime: new Date(),
-      reply: true,
-    };
-
-    await axios.post(url, data);
-
-    setMessage("");
-
-    // To Refresh the content
-    getAllMessages();
-  };
-
   return (
-    <div>
-      <h1>{title}</h1>
+    <Routes>
+      {/** http://localhost:3000/ */}
+      <Route path="/" element={<h1>Home</h1>} />
 
-      <input
-        type="button"
-        value="Make Ajax/POST Call"
-        onClick={createNewMessage}
-      />
+      {/** http://localhost:3000/home */}
+      <Route path="/home" element={<h1>Home</h1>} />
 
-      <input
-        type="text"
-        placeholder="Hi...whatsapp...!!"
-        value={message}
-        onChange={handleOnChangeMessage}
-      />
+      {/** http://localhost:3000/explore */}
+      <Route path="/explore" element={<h1>Explore</h1>} />
 
-      {messageList.map((item) => (
-        <div>{item.message}</div>
-      ))}
-    </div>
+      {/** http://localhost:3000/notifications */}
+      <Route path="/notification" element={<h1>Notifications</h1>} />
+
+      <Route path="*" element={<h1>Page Not Found</h1>} />
+    </Routes>
   );
 }
 
