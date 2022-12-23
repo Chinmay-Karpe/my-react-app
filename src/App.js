@@ -1,9 +1,16 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
+  // Data Member
   let [title] = useState("API DEMO");
   let [messageList, setMessageList] = useState([]);
+
+  // Spl Funcn :: Hook :: Like Constructor ::  Called while the Compoent is Initialized.
+  useEffect(() => {
+    // console.log("I AM GETTING CALLED");
+    getAllMessages();
+  }, []);
 
   //Functions
   /*("/messages)*/
