@@ -5,6 +5,7 @@ function App() {
   // Data Member
   let [title] = useState("API DEMO");
   let [messageList, setMessageList] = useState([]);
+  let [message, setMessage] = useState("");
 
   // Spl Funcn :: Hook :: Like Constructor ::  Called while the Compoent is Initialized.
   useEffect(() => {
@@ -12,7 +13,13 @@ function App() {
     getAllMessages();
   }, []);
 
-  //Functions
+  // Member Functions
+  let handleOnChangeMessage = (e) => {
+    message = e.target.value;
+    setMessage(message);
+    //setMessage(e.target.value)
+  };
+
   /*("/messages)*/
   let getAllMessages = async () => {
     let url = `http://localhost:3001/messages`;
@@ -29,12 +36,17 @@ function App() {
     let url = `http://localhost:3001/message`;
 
     let data = {
-      message: "Test Message",
+      message: message,
       messageTime: new Date(),
       reply: true,
     };
 
     await axios.post(url, data);
+
+    setMessage("");
+
+    // To Refresh the content
+    getAllMessages();
   };
 
   return (
@@ -43,14 +55,15 @@ function App() {
 
       <input
         type="button"
-        value="Make Ajax/API Call"
-        onClick={getAllMessages}
+        value="Make Ajax/POST Call"
+        onClick={createNewMessage}
       />
 
       <input
-        type="button"
-        value="Make Ajax/POST Call"
-        onClick={createNewMessage}
+        type="text"
+        placeholder="Hi...whatsapp...!!"
+        value={message}
+        onChange={handleOnChangeMessage}
       />
 
       {messageList.map((item) => (
