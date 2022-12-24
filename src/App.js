@@ -1,32 +1,21 @@
 import { Link, Route, Routes } from "react-router-dom";
+import AppNavLinks from "./components/AppNavLinks";
+import Explore from "./components/Explore";
+import Home from "./components/Home";
+import Notifications from "./components/Notifications";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   return (
     <div>
-      <Link to="/home" className="fs-4">
-        Home |
-      </Link>
-      <Link to="/explore" className="fs-4">
-        Explore |
-      </Link>
-      <Link to="/notification" className="fs-4">
-        Notifications
-      </Link>
+      <AppNavLinks />
 
       <Routes>
-        {/** http://localhost:3000/ */}
-        <Route path="/" element={<h1>Home</h1>} />
-
-        {/** http://localhost:3000/home */}
-        <Route path="/home" element={<h1>Home</h1>} />
-
-        {/** http://localhost:3000/explore */}
-        <Route path="/explore" element={<h1>Explore</h1>} />
-
-        {/** http://localhost:3000/notifications */}
-        <Route path="/notification" element={<h1>Notifications</h1>} />
-
-        <Route path="*" element={<h1>Page Not Found</h1>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );
