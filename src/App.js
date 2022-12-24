@@ -1,22 +1,30 @@
-import { Link, Route, Routes } from "react-router-dom";
-import AppNavLinks from "./components/AppNavLinks";
-import Explore from "./components/Explore";
-import Home from "./components/Home";
-import Notifications from "./components/Notifications";
-import PageNotFound from "./components/PageNotFound";
+import { useState } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 
 function App() {
   return (
-    <div>
-      <AppNavLinks />
+    <ErrorBoundary FallbackComponent={HandleError}>
+      <HelloWorld />
+    </ErrorBoundary>
+  );
+}
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+function HandleError({ error }) {
+  console.log("This eror occoured", error);
+
+  return (
+    <div>
+      <h1>An Error Occured</h1>
+    </div>
+  );
+}
+
+function HelloWorld() {
+  let [user] = useState({ id: 1, name: "rohit" });
+  return (
+    <div>
+      <h1>Hello World</h1>
+      <h1>{user}</h1>
     </div>
   );
 }
