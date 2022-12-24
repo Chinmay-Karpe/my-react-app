@@ -61,26 +61,59 @@ function App() {
 
   return (
     <div>
-      <h1>{title}</h1>
+      <h1 className="bg-dark text-light p-3 sticky-top">{title}</h1>
 
-      <input
-        type="text"
-        placeholder="Hi...whatsapp...!!"
-        value={message}
-        onChange={handleOnChangeMessage}
-        onKeyUp={checkEnterCode}
-        ref={inputRef} // document.querySelector()
-        required
-        minLength={2}
-      />
-      <input
-        type="button"
-        value="Make Ajax/API POST Call"
-        onClick={createNewMessage}
-      />
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-6">
+          <div className="d-flex">
+            <input
+              className="form-control form-control-lg"
+              type="text"
+              placeholder="Hi...whatsapp...!!"
+              value={message}
+              onChange={handleOnChangeMessage}
+              onKeyUp={checkEnterCode}
+              ref={inputRef} // document.querySelector()
+              required
+              minLength={2}
+            />
+            <input
+              className="btn btn-secondary"
+              type="button"
+              value="Add"
+              onClick={() => createNewMessage(false)}
+            />
+            <input
+              className="btn btn-secondary"
+              type="button"
+              value="Reply"
+              onClick={() => createNewMessage(true)}
+            />
+          </div>
+        </div>
+      </div>
 
       {messageList.map((item, index) => (
-        <div key={index}>{item.message}</div>
+        <div className="row justify-content-center">
+          <div className="col-12 col-md-6 ">
+            <div
+              key={index}
+              className={
+                item.reply
+                  ? "d-flex justify-content-end my-1"
+                  : "d-flex justify-content-start my-1"
+              }
+            >
+              <div className="badge text-bg-secondary">
+                {item.message}
+                <span className="ms-4">
+                  {new Date(item.messageTime).getHours()}:
+                  {new Date(item.messageTime).getMinutes()}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       ))}
     </div>
   );
