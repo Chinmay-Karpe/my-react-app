@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 function App() {
   // Data Member
   let inputRef = useRef();
-  let [title] = useState("API DEMO");
+  let [title] = useState("WhatsApp API DEMO");
   let [message, setMessage] = useState("");
   let [messageList, setMessageList] = useState([]);
 
@@ -78,13 +78,13 @@ function App() {
               minLength={2}
             />
             <input
-              className="btn btn-secondary"
+              className="btn btn-secondary ms-1"
               type="button"
               value="Add"
               onClick={() => createNewMessage(false)}
             />
             <input
-              className="btn btn-secondary"
+              className="btn btn-secondary ms-1"
               type="button"
               value="Reply"
               onClick={() => createNewMessage(true)}
@@ -104,7 +104,7 @@ function App() {
                   : "d-flex justify-content-start my-1"
               }
             >
-              <div className="badge text-bg-secondary">
+              <div className="badge text-bg-success">
                 {item.message}
                 <span className="ms-4">
                   {new Date(item.messageTime).getHours()}:
